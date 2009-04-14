@@ -1,0 +1,14 @@
+class Comments < ActiveRecord::Migration
+  def self.up
+	create_table :comments do |t|
+	t.column :blog_id, :integer
+	t.column :description, :text
+	t.column :commenttor, :string
+	t.column :created_at, :timestamp
+	end
+  end
+
+  def self.down
+	drop_table :comments
+  end
+end

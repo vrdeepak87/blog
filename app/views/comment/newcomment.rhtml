@@ -1,0 +1,13 @@
+<h1> <%= @blog.title %> </h1>
+<p> Written on: <%= @blog.created_at %> </br>
+<p> Description: <%= @blog.description %> </br>
+<p> Author: <%= @blog.author %> </br>
+</hr>
+<% form_tag (:action => 'create') do %>
+</br><label for="comment_description">Add Comments</label></br>
+<%= text_area 'comment', 'description', :rows => '4', :cols => '50' %>
+</br><label for="comment_commenttor">Name</label></br>
+<%= text_field 'comment', 'commenttor' %> 
+</br><%= submit_tag "Add" %>
+<% end %>
+</br><%= link_to 'Back', {:controller => 'Blog', :action => 'list'} %>

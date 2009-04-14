@@ -1,0 +1,11 @@
+<h1> <%= @blog.title %> </h1>
+<p> Written on: <%= @blog.created_at %> </br>
+<p> Description: <%= @blog.description %> </br>
+<p> Author: <%= @blog.author %> </br>
+</hr>
+
+
+<%= link_to 'View Comments', {:controller => 'Comment', :action => 'listcomment', :id => @blog.id} %></br>
+
+</br><%= link_to 'Back', {:action => 'list'} %> </br>
+

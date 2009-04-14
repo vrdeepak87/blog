@@ -1,0 +1,11 @@
+<h1> Write a new blog </h1>
+<% form_tag (:action => 'create') do %> 
+<p><label for="blog_title">Title</label>
+<%= text_field 'blog', 'title' %><p>
+<p><label for="blog_description">Description</label>
+<%= text_area  'blog', 'description' ,:rows => '5' ,:cols => '10' %><p>
+<p><label for="blog_created_by">Author</label>
+<%= text_field 'blog', 'author' %><p>
+<%= submit_tag "Create" %>
+<% end %></br>
+<%= link_to "Back", {:action => 'list'} %>

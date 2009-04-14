@@ -1,0 +1,22 @@
+<% if @blogs.blank? %>
+<p> You havent blogged anything so far</p>
+<% else %>
+<p>Blogs Written so far</p>
+
+<% @blogs.each do |c| %>
+<li> <%= link_to c.title , {:action => 'show' , :id => c.id} %> </li>
+<p> <%= c.description %> </p>
+<% end %>
+</ul>
+
+<%= will_paginate @blogs %>
+
+
+<% end %>
+<p> <%= link_to "Write new", {:action => 'new'} %></p>
+
+
+
+
+
+
