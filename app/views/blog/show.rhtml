@@ -3,8 +3,7 @@
 <p> Description: <%= @blog.description %> </br>
 <p> Author: <%= @blog.author %> </br>
 </hr>
-
-
+</br>
 <%= link_to 'View Comments', {:controller => 'Comment', :action => 'listcomment', :id => @blog.id} %></br>
 
 </br><%= link_to 'Back', {:action => 'list'} %> </br>

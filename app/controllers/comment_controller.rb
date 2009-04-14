@@ -7,15 +7,15 @@ class CommentController < ApplicationController
 
 	def newcomment
 	@blog=Blog.find(params[:id])
-	@comment=Comment.new
+	#@comment=Comment.new
 	end
 
 	def create
 	@comment=Comment.new(params[:comment])
 	if @comment.save
-		redirect_to :controller => 'Comment', :action => 'listcomment'
+		redirect_to :controller => 'Comment', :action => 'listcomment', :id => @comment.blog_id
 	else 
-		render :controller => 'comment', :action => 'newcomment'
+		render :controller => 'Comment', :action => 'newcomment', :id => @comment.blog_id
 	end
 	end
 

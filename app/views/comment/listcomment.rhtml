@@ -3,19 +3,20 @@
 <p> Description: <%= @blog.description %> </br> </p>
 <p> Author: <%= @blog.author %> </br> </p>
 </hr>
-
+</br>
 <% if @comments.blank? %>
 <p>No one has commented so far!</p>
 
 <% else %>
 <% @comments.each do |c| %>
-<p> <%= c.description %> </p>
-<p> <%= c.commenttor %> </p>
-<p> <%= c.created_at %> </p>
+<p><%= c.commenttor %> <label for "comment_commenttor">added a comment</label>
+<label for "comment_created_at"> on <%= c.created_at %></label></p>
+
+<p><%= c.description %></p> 
 <% end %>
 
 <% end %>
 
-<%= link_to "Add comment", {:controller => 'Comment', :action => 'newcomment', :id => @blog.id} %>
+<%= link_to "Add comment", {:controller => 'Comment', :action => 'newcomment', :id => @blog.id} %></br></br>
 
-</br><%= link_to 'Back', {:controller => 'Blog', :action => 'list'} %>
+<%= link_to 'Back', {:controller => 'Blog', :action => 'list'} %>

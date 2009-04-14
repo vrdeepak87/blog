@@ -8,6 +8,7 @@
 <%= text_area 'comment', 'description', :rows => '4', :cols => '50' %>
 </br><label for="comment_commenttor">Name</label></br>
 <%= text_field 'comment', 'commenttor' %> 
+<%= hidden_field 'comment', 'blog_id', 'value' => @blog.id %>
 </br><%= submit_tag "Add" %>
 <% end %>
 </br><%= link_to 'Back', {:controller => 'Blog', :action => 'list'} %>

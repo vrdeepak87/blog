@@ -5,7 +5,7 @@
 </hr>
 
 
-<%= link_to 'Add Comments', {:controller => 'Comment', :action => 'listcomment', :id => @blog.id} %></br>
+<%= link_to 'View Comments', {:controller => 'Comment', :action => 'listcomment', :id => @blog.id} %></br>
 
 </br><%= link_to 'Back', {:action => 'list'} %> </br>
 
