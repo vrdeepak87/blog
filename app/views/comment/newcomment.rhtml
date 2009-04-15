@@ -1,8 +1,23 @@
+<!-- Displaying the Respective blog for which comment has to be added -->
 <h1> <%= @blog.title %> </h1>
-<p> Written on: <%= @blog.created_at %> </br>
-<p> Description: <%= @blog.description %> </br>
-<p> Author: <%= @blog.author %> </br>
-</hr>
+<p> Written on: <%= @blog.created_at %> </br> </p>
+<p> Description: <%= @blog.description %> </br> </p>
+<p> Author: <%= @blog.author %> </br> </p>
+</hr> </br>
+
+<!-- If comments already exists for the above displayed blog, display the existing comments -->
+<% if @comments.blank? %>
+<p>Start adding comments!</p>
+
+<% else %>
+<% @comments.each do |c| %>
+<p><i><b> <%= c.commenttor %> <label for "comment_commenttor">added a comment</label>
+<label for "comment_created_at"> on <%= c.created_at %></label> </i></b></p>
+<p><%= c.description %></p> 
+<% end %>
+<% end %>
+
+<!-- Form for writing a new comment -->
 <% form_tag (:action => 'create') do %>
 </br><label for="comment_description">Add Comments</label></br>
 <%= text_area 'comment', 'description', :rows => '4', :cols => '50' %>
@@ -11,4 +26,6 @@
 <%= hidden_field 'comment', 'blog_id', 'value' => @blog.id %>
 </br><%= submit_tag "Add" %>
 <% end %>
+
+<!-- Link for navigating back -->
 </br><%= link_to 'Back', {:controller => 'Blog', :action => 'list'} %>
