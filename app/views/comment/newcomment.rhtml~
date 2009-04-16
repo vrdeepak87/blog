@@ -7,7 +7,7 @@
 
 <!-- If comments already exists for the above displayed blog, display the existing comments -->
 <% if @comments.blank? %>
-<p>No one has commented so far!</p>
+<p>Start adding comments!</p>
 
 <% else %>
 <% @comments.each do |c| %>
@@ -18,7 +18,7 @@
 <% end %>
 
 <!-- Form for writing a new comment -->
-<% form_tag (:action => 'create') do %>
+<% form_tag (:action => 'create', :id => 'addcomment' ) do %>
 </br><label for="comment_description">Add Comments</label></br>
 <%= text_area 'comment', 'description', :rows => '4', :cols => '50' %>
 </br><label for="comment_commenttor">Name</label></br>
