@@ -5,8 +5,7 @@
 
 $(document).ready(function() {
 	$('#addcomment').submit(function() {
-	$.post($(this).attr('action'), $(this).serialize(), null, 'script');
-	return false;
+	$.post($(this).attr('action'), 'script');
 	});
 
 });
