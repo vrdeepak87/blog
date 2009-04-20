@@ -5,9 +5,27 @@
 <p> Author: <%= @blog.author %> </br> </p>
 </hr></br>
 
-<!-- Link to call the "Comment" controller to list the existing comments -->
-<%= link_to 'View Comments', {:controller => 'Comment', :action => 'listcomment', :id => @blog.id} %></br>
+
+<div id="comments">
+
+<%= render :partial => "comment" %>
+</div>
+
+<!-- Form for writing a new comment -->
+<% form_remote_tag (:action => 'addcomment') do %>
+
+<%= error_messages_for 'comment' %><!-- Throws an error message if the validation fails -->
+
+<br><label for="comment_description">Add Comments</label></br>
+<br><%= text_area 'comment', 'description', :rows => '4', :cols => '50' %></br>
+<br><label for="comment_commenttor">Name</label></br>
+<br><%= text_field 'comment', 'commenttor' %></br>
+<%= hidden_field 'comment', 'blog_id', 'value' => @blog.id %>
+<br><%= submit_tag "Add" %></br>
+<% end %>
+
+
 
 <!-- Link for navigating back -->
-</br><%= link_to 'Back', {:action => 'list'} %> </br>
+<br><%= link_to 'Back', {:action => 'list'} %> </br>
 

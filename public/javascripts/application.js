@@ -3,14 +3,4 @@
 
 
 
-$(document).ready(function() {
-	$('#addcomment').submit(function() {
-	$.post($(this).attr('action'), 'script');
-	});
 
-});
-
-
-jQuery.ajaxSetup({ 
-  'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")} 
-})

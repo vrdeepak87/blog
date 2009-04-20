@@ -5,7 +5,9 @@
 <p> Author: <%= @blog.author %> </br> </p>
 </hr> </br>
 
+
 <!-- If comments already exists for the above displayed blog, display the existing comments -->
+<div id="comments">
 <% if @comments.blank? %>
 <p>Start adding comments!</p>
 
@@ -16,15 +18,16 @@
 <p><%= c.description %></p> 
 <% end %>
 <% end %>
+</div>
 
 <!-- Form for writing a new comment -->
-<% form_tag (:action => 'create', :id="addcomment") do %>
+<% form_remote_tag (:action => 'create', :id => 'addcomment') do %>
 </br><label for="comment_description">Add Comments</label></br>
 <%= text_area 'comment', 'description', :rows => '4', :cols => '50' %>
 </br><label for="comment_commenttor">Name</label></br>
 <%= text_field 'comment', 'commenttor' %> 
 <%= hidden_field 'comment', 'blog_id', 'value' => @blog.id %>
-</br><%= submit_tag "Add" %>
+</br><%= submit_remote_tag "Add" %>
 <% end %>
 
 <!-- Link for navigating back -->

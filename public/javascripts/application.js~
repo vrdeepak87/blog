@@ -5,7 +5,7 @@
 
 $(document).ready(function() {
 	$('#addcomment').submit(function() {
-	$.post($(this).attr('action'));
+	$.post($(this).attr('action'), 'script');
 	});
 
 });
