@@ -1,1 +1,2 @@
-page.insert_html :bottom, comments, :partial => 'comment', :object => @comment
+page.insert_html :bottom, 'comments', :partial => 'comment', :object => @comment
+page['comment_form'].reset

@@ -1,11 +1,3 @@
-<!-- If comments already exists for the above displayed blog, display the existing comments -->
-<% if @comments.blank? %>
-<p>No one has commented so far!</p>
-
-<% else %>
-<% @comments.each do |c| %>
-<p><i><b> <%= c.commenttor %> <label for "comment_commenttor">added a comment</label>
-<label for "comment_created_at"> on <%= c.created_at %></label> </i></b></p>
-<p><%= c.description %></p> 
-<% end %>
-<% end %>
+<p><i><b> <%= @comment.commenttor %> <label for "comment_commenttor">added a comment</label>
+<label for "comment_created_at"> on <%= @comment.created_at %></label> </i></b></p>
+<p><%= @comment.description %></p>

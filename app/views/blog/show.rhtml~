@@ -8,11 +8,11 @@
 
 <div id="comments">
 
-<%= render :partial => "comment", :collection => @blog.comments %>
+<%= render :partial => "comments" %>
 </div>
 
 <!-- Form for writing a new comment -->
-<% form_remote_tag (:action => 'addcomment') do %>
+<% form_remote_tag (:url => {:action => 'addcomment'}) do %>
 
 <%= error_messages_for 'comment' %><!-- Throws an error message if the validation fails -->
 
