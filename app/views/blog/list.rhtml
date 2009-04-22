@@ -1,9 +1,10 @@
+<%= flash[:error] %>
 <!-- Displaying the list of blogs which are written so far -->
 <% if @blogs.blank? %>
-<p> You havent blogged anything so far</p>
+You havent blogged anything so far
 
 <% else %>
-<p>Blogs Written so far</p>
+<p>Blogs Written so far<p>
 <% @blogs.each do |c| %>
 <li> <%= link_to c.title , {:action => 'show' , :id => c.id} %> </li>
 <p> <%= c.description %> </p>
@@ -13,9 +14,11 @@
 <!-- Will paginate snippet to display the page links in the browser -->
 <%= will_paginate @blogs %>
 
+
+<% if admin? %>
 <!-- Link for writing a new blog -->
 <p> <%= link_to "Write new", {:action => 'new'} %></p>
-
+<% end %>
 
 
 

@@ -11,6 +11,7 @@
 <%= render :partial => "comments" %>
 </div>
 
+<% if admin? %>
 <!-- Form for writing a new comment -->
 <% form_remote_tag (:url => {:action => 'addcomment'}, :html => {:id => 'comment_form'}) do %>
 
@@ -24,7 +25,7 @@
 <br><%= submit_tag "Add" %></br>
 <% end %>
 
-
+<% end %>
 
 <!-- Link for navigating back -->
 <br><%= link_to 'Back', {:action => 'list'} %> </br>

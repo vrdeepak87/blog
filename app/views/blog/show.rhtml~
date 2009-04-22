@@ -12,7 +12,7 @@
 </div>
 
 <!-- Form for writing a new comment -->
-<% form_remote_tag (:url => {:action => 'addcomment'}) do %>
+<% form_remote_tag (:url => {:action => 'addcomment'}, :html => {:id => 'comment_form'}) do %>
 
 <%= error_messages_for 'comment' %><!-- Throws an error message if the validation fails -->
 

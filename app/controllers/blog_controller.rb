@@ -1,5 +1,7 @@
 class BlogController < ApplicationController
 
+before_filter :authorize, :except => [:list, :show]
+
 def list
 @blogs=Blog.paginate(:page => params[:page], :per_page => 5, :order => 'created_at DESC')
 #Storing all the blogs in the instance variable.Paginate does the job of "find".

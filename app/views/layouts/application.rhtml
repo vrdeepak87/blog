@@ -13,7 +13,9 @@ charset=iso-8859-1" />
 <body>
 <h1>Blog Application </h1>
 <h3>Blog powered by Ruby on Rails</h3>
-
+<% if admin? %>
+<%= link_to 'logout',{:controller => 'session', :action => 'logout'}  %>
+<% end %>
 <%=@content_for_layout%>
 
 
