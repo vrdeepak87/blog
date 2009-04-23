@@ -1,7 +1,7 @@
 <!-- Displaying a particular blog -->
 <h1> <%= @blog.title %> </h1>
 <p> Written on: <%= @blog.created_at %> </br> </p>
-<p> Description: <%= @blog.description %> </br> </p>
+<p> <%= @blog.description %> </br> </p>
 <p> Author: <%= @blog.author %> </br> </p>
 </hr></br>
 

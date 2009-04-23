@@ -1,7 +1,9 @@
+<%= render :partial => "user" %>
+
 <!-- Displaying a particular blog -->
 <h1> <%= @blog.title %> </h1>
 <p> Written on: <%= @blog.created_at %> </br> </p>
-<p> Description: <%= @blog.description %> </br> </p>
+<p> <%= @blog.description %> </br> </p>
 <p> Author: <%= @blog.author %> </br> </p>
 </hr></br>
 
@@ -11,7 +13,6 @@
 <%= render :partial => "comments" %>
 </div>
 
-<% if admin? %>
 <!-- Form for writing a new comment -->
 <% form_remote_tag (:url => {:action => 'addcomment'}, :html => {:id => 'comment_form'}) do %>
 
@@ -25,7 +26,7 @@
 <br><%= submit_tag "Add" %></br>
 <% end %>
 
-<% end %>
+
 
 <!-- Link for navigating back -->
 <br><%= link_to 'Back', {:action => 'list'} %> </br>

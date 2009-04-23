@@ -6,15 +6,31 @@
 charset=iso-8859-1" />
 <meta http-equiv="Content-Language" content="en-us" />
 <%= javascript_include_tag :defaults %> 
+
 <title>Blog Application</title>
 </head>
 
 
 <body>
+<div align="center">
 <h1>Blog Application </h1>
-<h3>Blog powered by Ruby on Rails</h3>
-<% if admin? %>
-<%= link_to 'logout',{:controller => 'session', :action => 'logout'}  %>
+<h3>Blog powered by Artha42</h3>
+</div>
+
+<%if @user %>
+
+<div style="text-align:right;">
+<%= link_to 'logout', {:controller => 'session',:action => 'logout'} %>
+</div>
+
+<h3>Welcome <%= @user.username %>!</h3>
+
+<% else %>
+<h3>Welcome Guest!</h3>
+<%= link_to 'Signup', {:controller => 'session',:action => 'register'} %>
+
+<% end %>
+
 <%=@content_for_layout%>
 
 

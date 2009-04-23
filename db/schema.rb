@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090413131350) do
+ActiveRecord::Schema.define(:version => 20090423091600) do
 
   create_table "blogs", :force => true do |t|
     t.string   "title"
@@ -22,6 +22,14 @@ ActiveRecord::Schema.define(:version => 20090413131350) do
     t.integer  "blog_id"
     t.text     "description"
     t.string   "commenttor"
+    t.datetime "created_at"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "username"
+    t.string   "password_salt"
+    t.string   "password_hash"
+    t.string   "email"
     t.datetime "created_at"
   end
 

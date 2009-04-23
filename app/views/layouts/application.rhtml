@@ -6,16 +6,18 @@
 charset=iso-8859-1" />
 <meta http-equiv="Content-Language" content="en-us" />
 <%= javascript_include_tag :defaults %> 
+
 <title>Blog Application</title>
 </head>
 
 
 <body>
+<div align="center">
 <h1>Blog Application </h1>
-<h3>Blog powered by Ruby on Rails</h3>
-<% if admin? %>
-<%= link_to 'logout',{:controller => 'session', :action => 'logout'}  %>
-<% end %>
+<h3>Blog powered by Artha42</h3>
+</div>
+
+
 <%=@content_for_layout%>
 
 

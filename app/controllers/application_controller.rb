@@ -7,20 +7,22 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
+  
+  helper_method :check
 
+  protected
+ 
+  def authorize
+    unless check
+    flash[:info]="Not Authorized! Please Login! "
+    redirect_to :controller => 'session', :action => 'login'  
+    end
+  end
+ 
+  def check
+    session[:uid] != nil
+  end
 
-	helper_method :admin?	
+ 
 
-	protected
-
-	def authorize
-		unless admin?
-		flash[:error]="Not Authorized"
-		redirect_to :action => 'list'	
-		end
-	end
-
-	def admin?
-		session[:username]=="deepak" and session[:password]=="artha42"
-	end
 end

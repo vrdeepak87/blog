@@ -1,6 +1,16 @@
-<% form_tag (:action => "check") do%> 
-<br>Username:<%= text_field_tag :username %></br>
-<br>Password:<%= text_field_tag :password %></br>
-<br><%= submit_tag "Enter" %></br>
-<br><br>Enter your password.
+<div align="center" style="width: 800px">
+<%= '<b>'+flash[:info]+'</b>' if flash[:info] %>
+<%= '<font color="red">'+@auth_error+'</font>' if @auth_error %>
+<% form_tag(:action => 'login') do %>
+  Username:
+  <%= text_field_tag :login, params[:login] %>
+  <br /><br />
+  Password:
+  <%= password_field_tag :password, params[:password] %>
+  <br /><br />
+  <%= submit_tag "log in" %>
 <% end %>
+New user <%=link_to 'click here', {:action => 'register'} %>
+<br /><br />
+<%=link_to 'Guest User', {:controller => 'blog',:action => 'list'} %>
+</div>

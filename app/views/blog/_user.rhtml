@@ -1,0 +1,14 @@
+<%if @user %>
+
+<div style="text-align:right;">
+<%= link_to 'logout', {:controller => 'session',:action => 'logout'} %>
+</div>
+
+<h3>Welcome <%= @user.username %>!</h3>
+
+<% else %>
+<h3>Welcome Guest!</h3>
+<%= link_to 'Signup', {:controller => 'session',:action => 'register'} %>
+
+<% end %>
+
