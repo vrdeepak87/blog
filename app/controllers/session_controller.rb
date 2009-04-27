@@ -5,6 +5,7 @@ class SessionController < ApplicationController
       @user = User.new params[:user]
       if @user.save
         flash[:info] = 'You are registered now'
+	redirect_to :action => 'login'
       end    	
     end
   end

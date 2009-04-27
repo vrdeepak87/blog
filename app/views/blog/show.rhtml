@@ -1,18 +1,26 @@
 <%= render :partial => "user" %>
 
+<div id ="Blog display">
 <!-- Displaying a particular blog -->
 <h1> <%= @blog.title %> </h1>
 <p> Written on: <%= @blog.created_at %> </br> </p>
-<p> <%= @blog.description %> </br> </p>
-<p> Author: <%= @blog.author %> </br> </p>
-</hr></br>
+<p> <%= @blog.description %> </p> </br>
+<p> Author: <%= @blog.username %> </br> </p>
+<% if @temp %>
+<br><%= link_to 'Edit', {:action => 'edit',:id => @blog.id} %> </br>
+<%= link_to 'Delete', {:confirm => 'Are you sure?',:action => 'delete',:id => @blog.id} %>
+<% end %>
+<hr /></br>
+</div>
 
+<h3> Add Comments! </h3>
 
 <div id="comments">
-
 <%= render :partial => "comments" %>
 </div>
 
+
+<% if @user %>
 <!-- Form for writing a new comment -->
 <% form_remote_tag (:url => {:action => 'addcomment'}, :html => {:id => 'comment_form'}) do %>
 
@@ -20,12 +28,13 @@
 
 <br><label for="comment_description">Add Comments</label></br>
 <br><%= text_area 'comment', 'description', :rows => '4', :cols => '50' %></br>
-<br><label for="comment_commenttor">Name</label></br>
-<br><%= text_field 'comment', 'commenttor' %></br>
+<%= hidden_field 'comment', 'commenttor', 'value' => @user.username %>
 <%= hidden_field 'comment', 'blog_id', 'value' => @blog.id %>
+<%= hidden_field 'comment', 'user_id', 'value' => @user.id %>
+<%= hidden_field 'comment', 'username', 'value' => @user.username %>
 <br><%= submit_tag "Add" %></br>
 <% end %>
-
+<% end %>
 
 
 <!-- Link for navigating back -->

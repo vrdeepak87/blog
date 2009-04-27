@@ -5,7 +5,7 @@
 <%= c.description %>
 <% if (session[:uid]) %>
 <% if (c.user_id == @user.id) %>
-<%= link_to 'Delete', {:action => 'deletecomment', :id => c.id } %>
+<%= submit_to_remote 'delete_btn', 'Delete', :url => { :action => 'deletecomment', :id => c.id } %>
 <% end %>
 <% end %>
 <% end %>

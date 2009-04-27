@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   def check
     session[:uid] != nil
   end
+	
 
- 
 
 end

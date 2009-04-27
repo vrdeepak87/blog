@@ -1,5 +1,7 @@
 <%= render :partial => "user" %>
 
+<%= '<font color="green">'+flash[:info]+'</font>' if flash[:info] %>
+
 <!-- Displaying the list of blogs which are written so far -->
 <% if @blogs.blank? %>
 <p> You havent blogged anything so far</p>

@@ -11,12 +11,17 @@ end
 def show
 @blog=Blog.find(params[:id])
 #Searching a particular blod using "id" and storing it in @blog
-@comments=@blog.comments
-#@comments=Comment.find(@blog.id, :order => 'created_at DESC')
+@comments=Comment.find(:all, :conditions => ["blog_id = ?", @blog.id], :order => 'created_at DESC')
 @user = User.find_by_id(session[:uid])
+
+if(session[:uid])
+@temp=checkuser(@blog.user_id,@user.id)
 end
+end
+
 def new
 @blog=Blog.new
+@user=User.find_by_id(session[:uid])
 end
 
 def create
@@ -30,26 +35,36 @@ def create
   end
 end
 
+def checkuser(blogid,userid)
+blogid == userid
+end
+
+
+def edit
+@blog=Blog.find(params[:id])
+@user=User.find_by_id(session[:uid])
+end
+
+def update
+@blog = Blog.find(params[:id])
+	if @blog.update_attributes(params[:blog])
+        	flash[:info] = 'Blog was successfully updated.'
+		redirect_to :action => "list"
+	end
+end
+
+def delete()
+@blog=Blog.find(params[:id])
+var1=@blog.id
+Comment.destroy_all(["blog_id = ?", var1])
+@blog.destroy
+redirect_to :action => 'list'
+end
+
+
 def newcomment
 @comment=Comment.new
 end
-
-=begin
-def addcomment
-	  @comment=Comment.new(params[:comment])
-if @comment.save
-	  #action to be performed on a successive save
-		respond_to do |format|
-		format.html {redirect_to :action => 'show', :id => @comment.blog_id}
-		format.js
-		end
-else 
-		#action to be performed on failure
-		@blog = @comment.blog
-		#render :action => 'show', :id => @comment.blog_id
-	  end
-end
-=end
 
 
 def addcomment
@@ -61,5 +76,12 @@ def addcomment
 
 end
 
+def deletecomment
+@comment=Comment.find(params[:id])
+blog_id=@comment.blog_id
+@comment.destroy
+@comments=Comment.find(:all, :conditions => ["blog_id = ?", blog_id], :order => 'created_at DESC')
+redirect_to :action => 'show', :id => blog_id
+end
 
 end

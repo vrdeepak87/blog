@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   validates_presence_of :username
   validates_uniqueness_of :username
   validates_confirmation_of :password
+  has_many :blogs
+  has_many :comments
 
   attr_reader :password
 

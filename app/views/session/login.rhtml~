@@ -1,4 +1,4 @@
-<div align="center" style="width: 800px">
+<div align="center" style="width: 900px">
 <%= '<b>'+flash[:info]+'</b>' if flash[:info] %>
 <%= '<font color="red">'+@auth_error+'</font>' if @auth_error %>
 <% form_tag(:action => 'login') do %>

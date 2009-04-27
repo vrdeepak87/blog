@@ -14,7 +14,7 @@ class SessionController < ApplicationController
       @user = User.find_by_username(params[:login])
 	if @user and @user.password_is? params[:password]
 	   session[:uid] = @user.id
-         redirect_to :controller => 'blog', :action => 'list'
+           redirect_to :controller => 'blog', :action => 'list'
 	else 
 	   @auth_error = 'Wrong username or password'
 	end

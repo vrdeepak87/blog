@@ -1,0 +1,6 @@
+<h1> <%= @blog.title %> </h1>
+<p> Written on: <%= @blog.created_at %> </br> </p>
+<p> <%= @blog.description %> </br> </p>
+<p> Author: <%= @blog.username %> </br> </p>
+</hr></br>
+<%= render :partial => "comments" %>
