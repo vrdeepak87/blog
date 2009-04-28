@@ -1,0 +1,1 @@
+page.replace_html 'comments', :partial => "comments" ,:object => @comments

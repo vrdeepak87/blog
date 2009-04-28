@@ -1,4 +1,4 @@
 <h4><p><i> <%= @comment.commenttor %> <label for "comment_commenttor">added a comment</label>
 <label for "comment_created_at"> on <%= @comment.created_at %></label> </i></p></h4>
 <%= @comment.description %>
-<%= link_to 'Delete', {:action => 'deletecomment', :id => @comment.id } %>
+<%= submit_to_remote 'delete_btn', 'Delete',:url => {:action => 'deletecomment', :id => @comment.id } %>

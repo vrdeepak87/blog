@@ -1,0 +1,1 @@
+page.insert_html :bottom, 'Blog display', :partial => "comments" ,:collection => @comments

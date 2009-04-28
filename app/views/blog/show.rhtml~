@@ -1,5 +1,6 @@
 <%= render :partial => "user" %>
 
+<div id ="Blog display">
 <!-- Displaying a particular blog -->
 <h1> <%= @blog.title %> </h1>
 <p> Written on: <%= @blog.created_at %> </br> </p>
@@ -9,13 +10,23 @@
 <br><%= link_to 'Edit', {:action => 'edit',:id => @blog.id} %> </br>
 <%= link_to 'Delete', {:confirm => 'Are you sure?',:action => 'delete',:id => @blog.id} %>
 <% end %>
-
 <hr /></br>
+</div>
 
 <h3> Add Comments! </h3>
 
 <div id="comments">
-<%= render :partial => "comments" %>
+<% @comments.each do |c| %>
+<p><i><h4> <%= c.commenttor %> <label for "comment_commenttor">added a comment</label>
+<label for "comment_created_at"> on <%= c.created_at %></label> </h4></i></p>
+<%= c.description %>
+<% if (session[:uid]) %>
+<% if (c.user_id == @user.id) %>
+<%= submit_to_remote 'delete_btn', 'Delete',:url => {:action => 'deletecomment', :id => c.id } %>
+<% end %>
+<% end %>
+<% end %>
+<%= will_paginate @comments %>
 </div>
 
 

@@ -11,7 +11,8 @@ end
 def show
 @blog=Blog.find(params[:id])
 #Searching a particular blod using "id" and storing it in @blog
-@comments=Comment.find(:all, :conditions => ["blog_id = ?", @blog.id], :order => 'created_at DESC')
+#@comments=Comment.find(:all, :conditions => ["blog_id = ?", @blog.id], :order => 'created_at DESC')
+@comments=Comment.paginate_by_blog_id @blog.id, :page => params[:page], :per_page => 10, :order => 'created_at DESC'
 @user = User.find_by_id(session[:uid])
 
 if(session[:uid])
@@ -53,7 +54,7 @@ def update
 	end
 end
 
-def delete()
+def delete
 @blog=Blog.find(params[:id])
 var1=@blog.id
 Comment.destroy_all(["blog_id = ?", var1])
@@ -80,8 +81,13 @@ def deletecomment
 @comment=Comment.find(params[:id])
 blog_id=@comment.blog_id
 @comment.destroy
+@user=User.find_by_id(session[:uid])
 @comments=Comment.find(:all, :conditions => ["blog_id = ?", blog_id], :order => 'created_at DESC')
-redirect_to :action => 'show', :id => 'blog_id'
+
+	respond_to do |format|
+		format.html {redirect_to :action => 'show', :id => blog_id}
+		format.js 
+	end
 end
 
 end

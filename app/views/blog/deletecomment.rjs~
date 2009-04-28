@@ -1,1 +1,1 @@
-page.insert_html :bottom, 'Blog display', :partial => 'comments' :object => @comments
+page.replace_html :bottom, 'Blog display', :partial => "comments" ,:object => @comments
