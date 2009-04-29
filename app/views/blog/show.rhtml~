@@ -16,19 +16,9 @@
 <h3> Add Comments! </h3>
 
 <div id="comments">
-<% @comments.each do |c| %>
-<p><i><h4> <%= c.commenttor %> <label for "comment_commenttor">added a comment</label>
-<label for "comment_created_at"> on <%= c.created_at %></label> </h4></i></p>
-<%= c.description %>
-<% if (session[:uid]) %>
-<% if (c.user_id == @user.id) %>
-<%= submit_to_remote 'delete_btn', 'Delete',:url => {:action => 'deletecomment', :id => c.id } %>
-<% end %>
-<% end %>
-<% end %>
-<%= will_paginate @comments %>
+<%= render :partial => "comments" %>
 </div>
-
+<br/><%= will_paginate @comments, :renderer => 'RemoteLinkRenderer', :remote => {:with => 'value', :update => 'comments'}%>
 
 <% if @user %>
 <!-- Form for writing a new comment -->

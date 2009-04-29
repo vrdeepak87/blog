@@ -18,7 +18,7 @@
 <div id="comments">
 <%= render :partial => "comments" %>
 </div>
-
+<br/><%= will_paginate @comments, :renderer => 'RemoteLinkRenderer', :remote => {}%>
 
 <% if @user %>
 <!-- Form for writing a new comment -->

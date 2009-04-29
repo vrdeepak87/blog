@@ -2,15 +2,8 @@
 // This file is automatically included by javascript_include_tag :defaults
 
 
+  Event.addBehavior.reassignAfterAjax = true;
+  Event.addBehavior({
+    'div.pagination a' : Remote.Link
+  })
 
-$(document).ready(function() {
-	$('#addcomment').submit(function() {
-	$.post($(this).attr('action'), 'script');
-	});
-
-});
-
-
-jQuery.ajaxSetup({ 
-  'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")} 
-})
