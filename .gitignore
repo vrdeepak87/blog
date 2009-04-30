@@ -1,0 +1,9 @@
+.~
+*~
+**/*~
+**/*swp
+.swp
+*swp
+config/database.yml
+log
+tmp
