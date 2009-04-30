@@ -13,20 +13,14 @@ def show
 #Searching a particular blod using "id" and storing it in @blog
 @user = User.find_by_id(session[:uid])
 @comments=@blog.comments.paginate(:all, :page => params[:page] || 1, :per_page => 5, :order => "created_at desc")
-    respond_to do |format|
-      format.html
-      format.js do
-        render :update do |page|
-          page.replace_html 'comments', :partial => "comments"
-        end
-      end
-    end
+	respond_to do |format|
+		format.html
+		format.js
+	end
 
-
-
-if(session[:uid])
-@temp=checkuser(@blog.user_id,@user.id)
-end
+	if(session[:uid])
+	@temp=checkuser(@blog.user_id,@user.id)
+	end
 end
 
 def new
@@ -91,7 +85,7 @@ def deletecomment
 blog_id=@comment.blog_id
 @comment.destroy
 @user=User.find_by_id(session[:uid])
-@comments=Comment.find(:all, :conditions => ["blog_id = ?", blog_id], :order => 'created_at DESC')
+@comments=Comment.find(:all, :conditions => ["blog_id = ?", blog_id], :order => 'created_at DESC', :limit => '5')
 
 	respond_to do |format|
 		format.html {redirect_to :action => 'show', :id => blog_id}

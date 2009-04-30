@@ -13,14 +13,13 @@
 <hr /></br>
 </div>
 
-<h3> Add Comments! </h3>
+<!-- Link for navigating back -->
+<br><%= link_to 'Back', {:action => 'list'} %> </br>
 
-<div id="comments">
-<%= render :partial => "comments" %>
-</div>
-<br/><%= will_paginate @comments, :renderer => 'RemoteLinkRenderer', :remote => {:with => 'value', :update => 'comments'}%>
 
+<div id="comment form">
 <% if @user %>
+<h3> Add Comments! </h3>
 <!-- Form for writing a new comment -->
 <% form_remote_tag (:url => {:action => 'addcomment'}, :html => {:id => 'comment_form'}) do %>
 
@@ -35,8 +34,12 @@
 <br><%= submit_tag "Add" %></br>
 <% end %>
 <% end %>
+</div>
 
+<div id="comments">
+<%= render :partial => "comments" %>
+</div>
+ 
+<%= will_paginate @comments %>
 
-<!-- Link for navigating back -->
-<br><%= link_to 'Back', {:action => 'list'} %> </br>
 
