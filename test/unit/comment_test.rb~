@@ -10,9 +10,4 @@ class CommentTest < ActiveSupport::TestCase
 	comment = Comment.create :commenttor => "Test", :description => "Test description"
 	assert comment.save
 	end 
-	
-	def test_should_create_not_comment 
-	comment = Comment.create :description => "Test description"
-	assert !comment.save
-	end 
 end

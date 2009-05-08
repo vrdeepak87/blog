@@ -16,10 +16,5 @@ class BlogTest < ActiveSupport::TestCase
 	blog = Blog.create :title => "Test title"
 	assert !blog.save
 	end 
-
-	def test_should_create_blog_with_all_blank_options_except_description 
-	blog = Blog.create :description => "Test description"
-	assert blog.save
-	end 
 	
 end

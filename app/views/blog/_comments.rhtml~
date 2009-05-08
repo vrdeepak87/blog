@@ -3,9 +3,11 @@
 <p><i><h4> <%= c.commenttor %> <label for "comment_commenttor">added a comment</label>
 <label for "comment_created_at"> on <%= c.created_at %></label> </h4></i></p>
 <%= c.description %>
+<div id="dummy">
+</div>
 <% if (session[:uid]) %>
 <% if (c.user_id == @user.id) %>
-<%= submit_to_remote 'delete_btn', 'Delete',(:url => {:action => 'deletecomment', :id => c.id }) %>
+<%= submit_to_remote 'delete_btn', 'Delete',:url => {:action => 'deletecomment', :id => c.id } %>
 <% end %>
 <% end %>
 <% end %>

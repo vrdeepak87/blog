@@ -2,9 +2,9 @@
 <h1> Write a new blog </h1>
 <% form_tag (:action => 'create') do %> 
 <p><label for="blog_title">Title</label>
-<%= text_field 'blog', 'title' %><p>
+<%= text_field @blog.title %><p>
 <p><label for="blog_description">Description</label></br>
-<%= text_area  'blog', 'description'  %><p>
+<%= text_area  @blog.description  %><p>
 <%= hidden_field 'blog', 'user_id', 'value' => @user.id %>
 <%= hidden_field 'blog', 'username', 'value' => @user.username %>
 <%= submit_tag "Create" %>

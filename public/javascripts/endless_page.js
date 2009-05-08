@@ -1,4 +1,5 @@
 // endless_page.js
+
 var currentPage = 1;
 var blog = 5; 
 function checkScroll() {

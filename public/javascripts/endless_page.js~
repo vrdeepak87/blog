@@ -1,10 +1,11 @@
 // endless_page.js
+
 var currentPage = 1;
 var blog = 5; 
 function checkScroll() {
   if (nearBottomOfPage()) {
     currentPage++;
-    new Ajax.Request('/blog/show/@blog.id.js?page=' + currentPage, {asynchronous:true, evalScripts:true, method:'get'});
+    new Ajax.Request('/blog/show/'+ blog +'.js?page=' + currentPage, {asynchronous:true, evalScripts:true, method:'get'});
   } else {
     setTimeout("checkScroll()", 250);
   }

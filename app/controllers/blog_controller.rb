@@ -12,15 +12,18 @@ def show
 @blog=Blog.find(params[:id])
 #Searching a particular blod using "id" and storing it in @blog
 @user = User.find_by_id(session[:uid])
+	
+	if(session[:uid])
+	@temp=checkuser(@blog.user_id,@user.id)
+	end
+
 @comments=@blog.comments.paginate(:all, :page => params[:page] || 1, :per_page => 5, :order => "created_at desc")
 	respond_to do |format|
 		format.html
 		format.js
 	end
 
-	if(session[:uid])
-	@temp=checkuser(@blog.user_id,@user.id)
-	end
+
 end
 
 def new

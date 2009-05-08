@@ -4,8 +4,9 @@ class SessionController < ApplicationController
     if request.post?
       @user = User.new params[:user]
       if @user.save
-        flash[:info] = 'You are registered now'
 	redirect_to :action => 'login'
+        flash[:info] = 'You are registered now'
+
       end    	
     end
   end
@@ -17,7 +18,8 @@ class SessionController < ApplicationController
 	   session[:uid] = @user.id
            redirect_to :controller => 'blog', :action => 'list'
 	else 
-	   @auth_error = 'Wrong username or password'
+	   redirect_to :action => 'login'
+	   flash[:info] = 'Wrong username or password'
 	end
     end
   end

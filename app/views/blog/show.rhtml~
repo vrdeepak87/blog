@@ -1,5 +1,12 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<%= javascript_include_tag 'prototype','endless_page'  %>
 <%= render :partial => "user" %>
+</head>
 
+<body>
 <div id ="Blog display">
 <!-- Displaying a particular blog -->
 <h1> <%= @blog.title %> </h1>
@@ -39,7 +46,6 @@
 <div id="comments">
 <%= render :partial => "comments" %>
 </div>
- 
-<%= will_paginate @comments %>
 
-
+</body>
+</html>

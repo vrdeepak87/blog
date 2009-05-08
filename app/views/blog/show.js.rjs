@@ -1,3 +1,0 @@
-page.insert_html :bottom, 'comments', :partial => 'comments', :object => @comments
-
-

@@ -14,7 +14,7 @@ class UserTest < ActiveSupport::TestCase
 
 	def user_should_register_with_username_and_password
 	user = User.create :username => "test", :password => "testpassword"
-	assert user.save
+	assert !user.save
 	end
 
 end
