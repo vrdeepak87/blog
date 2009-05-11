@@ -5,7 +5,7 @@ blog_test1:
   title: 'Ruby Tutorial'
   description : 'This is a nice Ruby tutorial'
   username: deepak
-blog_test2:
+blog_test1:
   id: 2
   title: 'Java Programming'
   description : 'Java Programming for the beginners'

@@ -25,12 +25,5 @@ fixtures :blogs
     		 assert_redirected_to :action => 'show'
   	end
 
-
-	def test_search_not_found
-    		get :search, :title => 'HTML Tutorial'
-    		assert_redirected_to :action => 'list'
-    		assert_equal 'No such blog available', flash[:error]
-  	end
-
 	
 end
