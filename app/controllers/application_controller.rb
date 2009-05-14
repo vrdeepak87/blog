@@ -22,7 +22,9 @@ class ApplicationController < ActionController::Base
   def check
     session[:uid] != nil
   end
-	
 
+  def current_user
+    @user = User.find_by_id(session[:uid])
+  end	
 
 end

@@ -1,9 +1,9 @@
 class BlogController < ApplicationController
 
 before_filter :authorize, :except => [:list, :show]
+before_filter :current_user
 
 def list
-@user = User.find_by_id(session[:uid])
 @blogs=Blog.paginate(:page => params[:page], :per_page => 5, :order => 'created_at DESC')
 #Storing all the blogs in the instance variable.Paginate does the job of "find".
 end
@@ -11,7 +11,6 @@ end
 def show
 @blog=Blog.find(params[:id])
 #Searching a particular blod using "id" and storing it in @blog
-@user = User.find_by_id(session[:uid])
 	
 	if(session[:uid])
 	@temp=checkuser(@blog.user_id,@user.id)
@@ -28,7 +27,6 @@ end
 
 def new
 @blog=Blog.new
-@user=User.find_by_id(session[:uid])
 end
 
 def create
@@ -49,7 +47,6 @@ end
 
 def edit
 @blog=Blog.find(params[:id])
-@user=User.find_by_id(session[:uid])
 end
 
 def update
@@ -87,7 +84,6 @@ def deletecomment
 @comment=Comment.find(params[:id])
 blog_id=@comment.blog_id
 @comment.destroy
-@user=User.find_by_id(session[:uid])
 @comments=Comment.find(:all, :conditions => ["blog_id = ?", blog_id], :order => 'created_at DESC', :limit => '5')
 
 	respond_to do |format|

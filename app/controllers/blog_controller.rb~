@@ -1,9 +1,9 @@
 class BlogController < ApplicationController
 
 before_filter :authorize, :except => [:list, :show]
+before_filter :current_user
 
 def list
-@user = User.find_by_id(session[:uid])
 @blogs=Blog.paginate(:page => params[:page], :per_page => 5, :order => 'created_at DESC')
 #Storing all the blogs in the instance variable.Paginate does the job of "find".
 end
@@ -12,15 +12,18 @@ def show
 @blog=Blog.find(params[:id])
 #Searching a particular blod using "id" and storing it in @blog
 @user = User.find_by_id(session[:uid])
+	
+	if(session[:uid])
+	@temp=checkuser(@blog.user_id,@user.id)
+	end
+
 @comments=@blog.comments.paginate(:all, :page => params[:page] || 1, :per_page => 5, :order => "created_at desc")
 	respond_to do |format|
 		format.html
 		format.js
 	end
 
-	if(session[:uid])
-	@temp=checkuser(@blog.user_id,@user.id)
-	end
+
 end
 
 def new
@@ -30,6 +33,7 @@ end
 
 def create
   @blog=Blog.new(params[:blog])
+  @user=User.find_by_id(session[:uid])
   if @blog.save
     #action to be performed on a successive save 
     redirect_to :action => 'list'
