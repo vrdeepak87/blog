@@ -18,19 +18,12 @@ fixtures :blogs
   	end
 
 	def test_search_blog
-   		 get :search, :title => 'Ruby Tutorial'
+   		 get :show, :id => '1'
     		 assert_not_nil assigns(:blog)
-    		 assert_equal books(:blog_test1).title, assigns(:blog).title
+    		 assert_equal blogs(:blog_test1).title, assigns(:blog).title
     		 assert_valid assigns(:blog)
-    		 assert_redirected_to :action => 'show'
-  	end
+    	end
 
-
-	def test_search_not_found
-    		get :search, :title => 'HTML Tutorial'
-    		assert_redirected_to :action => 'list'
-    		assert_equal 'No such blog available', flash[:error]
-  	end
 
 	
 end
